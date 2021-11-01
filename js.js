@@ -2,7 +2,8 @@ function Calc(operator, a, b) {
     if (isNaN(a) || isNaN(b)) {
         return ('Error');
     }
-   
+    a = +a;
+    b = +b;
     if (operator === 'sum') {
         return a + b;
     } else if (operator === 'multi') {
@@ -19,6 +20,6 @@ function Calc(operator, a, b) {
     }
 }
 
-console.log(Calc('multi', "3", 2))
+console.log(Calc('multi', 1, 2))
 
 
