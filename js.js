@@ -1,25 +1,27 @@
+function isValue (a,b) {
+    return (Number.isFinite(a) && Number.isFinite(b))
+}
+
 function Calc(operator, a, b) {
-    if (isNaN(a) || isNaN(b)) {
-        return ('Error');
-    }
-    a = +a;
-    b = +b;
-    if (operator === 'sum') {
-        return a + b;
-    } else if (operator === 'multi') {
-        return a * b;
-    } else if (operator === 'division') {
-        if (b == 0) {
-            return ('Error: Division by zero')
+    if (isValue(a,b)) {
+        switch (operator) {
+            case 'sum':
+                return a + b;
+            case 'division':
+                if (b == 0) {
+                    return ('Error: Division by zero');
+                }
+                return a / +b;
+            case 'multi':
+                return a * b;
+            case 'minus':
+                return a - b;
+            default: 
+                return ('unknown operation');
         }
-        return a / b;
-    } else if (operator === 'minus') {
-        return a - b;
     } else {
-        return ('unknown operation');
+        return ('Error');
     }
 }
 
-console.log(Calc('multi', 1, 2))
-
-
+console.log(Calc('division', -4, 3))
