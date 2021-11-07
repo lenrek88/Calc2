@@ -3,20 +3,16 @@ function isValue (a,b) {
 }
 
 function Calc(operator, a, b) {
+    let operation = {
+        sum: a+b,
+        div: (b == 0) ? 'Error: Division by zero' : a/+b,
+        mult: a*b,
+        sub: a-b,
+    }
     if (isValue(a,b)) {
-        switch (operator) {
-            case 'sum':
-                return a + b;
-            case 'division':
-                if (b == 0) {
-                    return ('Error: Division by zero');
-                }
-                return a / +b;
-            case 'multi':
-                return a * b;
-            case 'minus':
-                return a - b;
-            default: 
+        if (operator in operation) {
+                return operation[operator];
+        } else {
                 return ('unknown operation');
         }
     } else {
@@ -24,4 +20,5 @@ function Calc(operator, a, b) {
     }
 }
 
-console.log(Calc('division', -4, 3))
+console.log(Calc('div', 10, 3))
+
